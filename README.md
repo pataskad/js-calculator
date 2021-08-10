@@ -13,6 +13,6 @@ This JavaScript calculator project, based from 'The Odin Project' curriculum, co
 * StackOverflow
 * Google-Fu 
 
-# How to Run this Project Locally #
+# How to Run Locally #
 
 The primary and likely most efficient method of running this project is with the Live Server VSCode extension.  Using this extension will allow you to run a live environment to actively view changes and other information about the project at run time. 

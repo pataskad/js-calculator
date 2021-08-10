@@ -14,3 +14,7 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 }
+
+function operate(a, b, operator) {
+    // depending on operator, call necessary function
+}
