@@ -1,0 +1,41 @@
+body, html {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+header {
+    margin: 0px 0px 150px 0px;
+    height: 80px;
+    background-color: green;
+}
+header > h1 {
+    color: gold;
+    font-size: 50px;
+    padding-top: 10px;
+    margin: 0;
+}
+.container {
+    margin: auto;
+    height: 400px;
+    width: 325px;
+    border: 1px solid green;
+}
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    position: fixed;
+    background-color: green;
+}
+footer > h2 {
+    color: gold;
+}
+footer > h2 > a {
+    text-decoration: none;
+    color: gold;
+}
+footer > h2 > a:hover {
+    text-decoration: underline;
+}
