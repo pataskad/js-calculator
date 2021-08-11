@@ -18,8 +18,20 @@ header > h1 {
 .container {
     margin: auto;
     height: 400px;
-    width: 325px;
+    width: 370px;
+    padding: 1px 3px 1px 1px;
     border: 1px solid green;
+}
+#calculator-display {
+    height: 13%;
+    margin-bottom: 3px;
+    width: 100%;
+    border: 1px solid red;
+}
+#digit-pad {
+    border: 1px solid red;
+    height: 85%;
+    width: 75%;
 }
 footer {
     bottom: 0;
