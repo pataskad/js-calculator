@@ -1,5 +1,7 @@
 'use strict';
 
+// nodes 
+
 
 // arithmetic functions
 function add(a, b) {
@@ -16,7 +18,6 @@ function divide(a, b) {
 }
 
 function operate(a, b, operator) {
-    // depending on operator, call necessary function
     if (operator === '+') {
         return add(a, b);
     } else if (operator === '-') {
