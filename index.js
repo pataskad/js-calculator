@@ -5,6 +5,7 @@ const output = document.querySelector('#output');
 const digits = document.getElementsByClassName('digits');
 const clear = document.querySelector('#clear-btn');
 const operators = document.getElementsByClassName('operators');
+const enter = document.querySelector('#enter-btn');
 
 
 // evaluation global variables
@@ -44,6 +45,12 @@ for (let y = 0; y < operators.length; y++) {
 
 // eventListeners
 clear.addEventListener('click', clearValues);
+enter.addEventListener('click', () => {
+    b = value;
+    value = 0;
+    const result = operate(a, b, operator);
+    output.innerHTML = result;
+});
 
 // when operator button pushed
 // save displayed value to variable (a)
@@ -62,7 +69,7 @@ function clearValues() {
 }
 // arithmetic functions
 function add(a, b) {
-    return a + b;
+    return +a + +b;
 }
 function subtract(a, b) {
     return a - b;
