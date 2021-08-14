@@ -20,8 +20,9 @@ header > h1 {
     margin: auto;
     height: 400px;
     width: 370px;
+    border-radius: 8px;
     background-color: crimson;
-    padding: 3px 2px 3px 2px;
+    padding: 5px 4px 4px 5px;
     border: 1px solid darkslategray;
 }
 #calculator-display {
