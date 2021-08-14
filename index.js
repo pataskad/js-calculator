@@ -2,47 +2,56 @@
 
 // nodes 
 const output = document.querySelector('#output');
-
 const digits = document.getElementsByClassName('digits');
-
-const digitOne = document.querySelector('#one-btn');
-const digitTwo = document.querySelector('#two-btn');
-
 const clear = document.querySelector('#clear-btn');
+const operators = document.getElementsByClassName('operators');
 
+
+// evaluation global variables
 let value = 0;
 let a = 0;
 let b = 0;
-let operator = '+';
-
+let operator = '';
 
 for (let i = 0; i < digits.length; i++) {
-    // loop creates listeners on every digit
+    // digit event listener loop
     digits[i].addEventListener('click', (e) => {
-        value = e.target.value;
-        output.innerHTML += value;
+        // if/else => operator present => clear display when digit clicked
+        // When 'entered' save that current displayed value to (b) variable
+        // run operate function with set variables
+        output.innerHTML += e.target.value;
+        value = output.innerHTML;
+    });
+}
+for (let y = 0; y < operators.length; y++) {
+    // operator event listener loop
+    operators[y].addEventListener('click', (e) => {
+        a = value;
+        value = 0;
+        output.innerHTML = '';
+        output.innerHTML = e.target.value;
+        operator = e.target.value;
     });
 }
 
 // eventListeners
-clear.addEventListener('click', (e) => {
-    output.innerHTML = '';
-});
-/* digitOne.addEventListener('click', (e) => {
-    value = e.target.value;
-    output.innerHTML += value;
-});
-digitTwo.addEventListener('click', (e) => {
-    value = e.target.value;
-    output.innerHTML += value;
-}); */
+clear.addEventListener('click', clearValues);
 
 // when operator button pushed
 // save displayed value to variable (a)
-// if operator displayed, save operator to variable (operator)
-// repeat for (b) variable when enter or '=' is pressed, 
+// when operator displayed, save choice to operator variable
+// clear operator choice on next digit selection
+// repeat for (b) variable when enter or '=' is pressed, save digit value to (b)
 // then call operate function to evaluate and display results
 
+// helper functions
+function clearValues() {
+    output.innerHTML = '';
+    operator = '';
+    a = 0;
+    b = 0;
+    value = 0;
+}
 // arithmetic functions
 function add(a, b) {
     return a + b;
@@ -56,7 +65,6 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 }
-
 function operate(a, b, operator) {
     // set a and b equal to numbers entered
     // set operator to operator entered

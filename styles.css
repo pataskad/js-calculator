@@ -8,7 +8,7 @@ body, html {
 header {
     margin: 0px 0px 150px 0px;
     height: 80px;
-    background-color: green;
+    background-color: darkslategray;
 }
 header > h1 {
     color: gold;
@@ -21,7 +21,7 @@ header > h1 {
     height: 400px;
     width: 370px;
     background-color: crimson;
-    padding: 1px 3px 1px 1px;
+    padding: 3px 2px 3px 2px;
     border: 1px solid darkslategray;
 }
 #calculator-display {
@@ -100,7 +100,7 @@ footer {
     right: 0;
     height: 70px;
     position: fixed;
-    background-color: green;
+    background-color: darkslategray;
 }
 footer > h2 {
     color: gold;
