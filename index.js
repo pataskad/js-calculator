@@ -17,13 +17,7 @@ let operator = '';
 for (let i = 0; i < digits.length; i++) {
     // digit event listener loop
     digits[i].addEventListener('click', (e) => {
-        // if/else => operator present => clear display when digit clicked
-        // When 'entered' save that current displayed value to (b) variable
-        // run operate function with set variables
-        if (       output.innerHTML === '-'
-                || output.innerHTML === '+'
-                || output.innerHTML === '*'
-                || output.innerHTML === '/') {
+        if (output.innerHTML === '-' || output.innerHTML === '+' || output.innerHTML === '*' || output.innerHTML === '/') {
             output.innerHTML = '';
             output.innerHTML += e.target.value;
         } else {
@@ -35,31 +29,31 @@ for (let i = 0; i < digits.length; i++) {
 for (let y = 0; y < operators.length; y++) {
     // operator event listener loop
     operators[y].addEventListener('click', (e) => {
-        a = value;
-        value = 0;
-        output.innerHTML = '';
-        output.innerHTML = e.target.value;
-        operator = e.target.value;
+        if (output.innerHTML) {
+            a = value;
+            value = 0;
+            output.innerHTML = '';
+            output.innerHTML = e.target.value;
+            operator = e.target.value;
+        }
     });
 }
 
 // eventListeners
 clear.addEventListener('click', clearValues);
-enter.addEventListener('click', () => {
-    b = value;
-    value = 0;
-    const result = operate(a, b, operator);
-    output.innerHTML = result;
-});
-
-// when operator button pushed
-// save displayed value to variable (a)
-// when operator displayed, save choice to operator variable
-// clear operator choice on next digit selection
-// repeat for (b) variable when enter or '=' is pressed, save digit value to (b)
-// then call operate function to evaluate and display results
+enter.addEventListener('click', evaluate);
 
 // helper functions
+function evaluate() {
+    if (output.innerHTML) {
+        // add values to result and return result?
+        b = value;
+        value = 0; // keep? Likely must remove for additional calc options
+        const result = operate(a, b, operator);
+        output.innerHTML = result;
+        /* clearValues(); */
+    }
+}
 function clearValues() {
     output.innerHTML = '';
     operator = '';
@@ -67,7 +61,7 @@ function clearValues() {
     b = 0;
     value = 0;
 }
-// arithmetic functions
+// math functions
 function add(a, b) {
     return +a + +b;
 }
@@ -81,8 +75,6 @@ function divide(a, b) {
     return a / b;
 }
 function operate(a, b, operator) {
-    // set a and b equal to numbers entered
-    // set operator to operator entered
     if (operator === '+') {
         return add(a, b);
     } else if (operator === '-') {
