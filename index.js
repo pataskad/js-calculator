@@ -19,7 +19,15 @@ for (let i = 0; i < digits.length; i++) {
         // if/else => operator present => clear display when digit clicked
         // When 'entered' save that current displayed value to (b) variable
         // run operate function with set variables
-        output.innerHTML += e.target.value;
+        if (       output.innerHTML === '-'
+                || output.innerHTML === '+'
+                || output.innerHTML === '*'
+                || output.innerHTML === '/') {
+            output.innerHTML = '';
+            output.innerHTML += e.target.value;
+        } else {
+            output.innerHTML += e.target.value;
+        }
         value = output.innerHTML;
     });
 }
