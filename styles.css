@@ -31,6 +31,15 @@ header > h1 {
     background-color: whitesmoke;
     border: 1px solid darkslategray;
 }
+#output {
+    text-align: right;
+    height: 90%;
+    width: 95%;
+    margin: 5px;
+    font-size: xx-large;
+    padding-top: 12px;
+    overflow: hidden;
+}
 .bottom-calc {
     height: 100%;
     display: flex;
@@ -65,10 +74,22 @@ header > h1 {
     width: 100%;
     height: 100%;
     cursor: pointer;
+    background-color: skyblue;
     font-size: large;
     border: 1px solid teal;
 }
 .operators:hover {
+    color: greenyellow;
+    background-color: rgba(220, 20, 60, 0.562);
+    border: 1px solid teal;
+}
+.enter-clear {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: large;
+}
+.enter-clear:hover {
     color: greenyellow;
     background-color: rgba(220, 20, 60, 0.562);
     border: 1px solid teal;
