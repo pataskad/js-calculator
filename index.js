@@ -38,7 +38,7 @@ for (let y = 0; y < operators.length; y++) {
             b = value;
             value = 0;
             result = operate(a, b, operator);
-            output.textContent = result + e.target.value;
+            output.textContent = +(result.toFixed(2)) + e.target.value;
             a = result;
             operator = e.target.value;
          } else if (!isNaN(output.textContent) && output.textContent !== '') { // if var is number and not empty
