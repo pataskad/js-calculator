@@ -7,13 +7,18 @@ body, html {
 }
 header {
     margin: 0px 0px 150px 0px;
-    height: 80px;
+    height: 125px;
     background-color: darkslategray;
 }
 header > h1 {
     color: gold;
     font-size: 50px;
     padding-top: 10px;
+    margin: 0;
+}
+header > h3 {
+    color: goldenrod;
+    padding-top: 12px;
     margin: 0;
 }
 .container {
@@ -29,14 +34,15 @@ header > h1 {
     height: 17%;
     margin: 2px 0px 3px 5px;
     width: 96.5%;
-    background-color: whitesmoke;
+    background-color: #b3ff66e1;
     border: 1px solid darkslategray;
 }
 #output {
     text-align: right;
-    height: 90%;
+    height: 75%;
     width: 95%;
     margin: 5px;
+    background-color: #b3ff66a2;
     font-size: xx-large;
     padding-top: 12px;
     overflow: hidden;

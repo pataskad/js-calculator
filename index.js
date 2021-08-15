@@ -13,27 +13,31 @@ let value = 0;
 let a = 0;
 let b = 0;
 let operator = '';
+let result = 0;
 
 for (let i = 0; i < digits.length; i++) {
     // digit event listener loop
     digits[i].addEventListener('click', (e) => {
-        if (output.innerHTML === '-' || output.innerHTML === '+' || output.innerHTML === '*' || output.innerHTML === '/') {
-            output.innerHTML = '';
-            output.innerHTML += e.target.value;
+        if (output.textContent === '-' || output.textContent === '+' || output.textContent === '*' || output.textContent === '/') {
+            output.textContent = '';
+            output.textContent += e.target.value;
         } else {
-            output.innerHTML += e.target.value;
+            output.textContent += e.target.value;
         }
-        value = output.innerHTML;
+        value = output.textContent;
     });
 }
 for (let y = 0; y < operators.length; y++) {
     // operator event listener loop
     operators[y].addEventListener('click', (e) => {
-        if (output.innerHTML) {
+        // set up evaluation chain, if another operator is clicked after two numbers assigned to (a) and (b), 
+        // evaluate those two current numbers and store to (a), if another operator is clicked,
+        // evaluate new (a) result with new (b), if 'enter' pressed, evaluate current (a) and (b)
+        if (output.textContent) {
             a = value;
             value = 0;
-            output.innerHTML = '';
-            output.innerHTML = e.target.value;
+            output.textContent = '';
+            output.textContent = e.target.value;
             operator = e.target.value;
         }
     });
@@ -45,21 +49,20 @@ enter.addEventListener('click', evaluate);
 
 // helper functions
 function evaluate() {
-    if (output.innerHTML) {
-        // add values to result and return result?
+    // if dividing by zero (0), return error message
+    if (output.textContent) {
         b = value;
-        value = 0; // keep? Likely must remove for additional calc options
-        const result = operate(a, b, operator);
-        output.innerHTML = result;
-        /* clearValues(); */
+        result = operate(a, b, operator);
+        output.textContent = +(result.toFixed(2));
     }
 }
 function clearValues() {
-    output.innerHTML = '';
+    output.textContent = '';
     operator = '';
     a = 0;
     b = 0;
     value = 0;
+    result = 0;
 }
 // math functions
 function add(a, b) {
