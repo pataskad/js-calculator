@@ -21,6 +21,10 @@ for (let i = 0; i < digits.length; i++) {
         if (output.textContent === '-' || output.textContent === '+' || output.textContent === '*' || output.textContent === '/') {
             output.textContent = '';
             output.textContent += e.target.value;
+        } else if (result = output.textContent) {
+            output.textContent = '';
+            output.textContent = e.target.value;
+            b = value;
         } else {
             output.textContent += e.target.value;
         }
@@ -30,10 +34,14 @@ for (let i = 0; i < digits.length; i++) {
 for (let y = 0; y < operators.length; y++) {
     // operator event listener loop
     operators[y].addEventListener('click', (e) => {
-        // set up evaluation chain, if another operator is clicked after two numbers assigned to (a) and (b), 
-        // evaluate those two current numbers and store to (a), if another operator is clicked,
-        // evaluate new (a) result with new (b), if 'enter' pressed, evaluate current (a) and (b)
-        if (output.textContent) {
+        if (operator !== '') {
+            b = value;
+            value = 0;
+            result = operate(a, b, operator);
+            output.textContent = result + operator;
+            a = result;
+            operator = e.target.value;
+         } else if (!isNaN(output.textContent) && output.textContent !== '') { // if var is number and not empty
             a = value;
             value = 0;
             output.textContent = '';
