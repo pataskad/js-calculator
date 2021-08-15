@@ -1,6 +1,8 @@
 # Calculator #
 
-This JavaScript calculator project, based from 'The Odin Project' curriculum, contains basic arithmetic functions through an HTML user interface in order for users to interact with and compute potential arguments through custom built JavaScript functions. 
+This JavaScript calculator project, based from 'The Odin Project' curriculum, contains basic arithmetic functions through an HTML user interface in order for users to interact with and compute math arguments through custom built JavaScript functions. In addition to basic arithmetic functionality, this project includes edge case handling to account for the potential bad inputs and funky numbers that may be produced by the calculator, such as long decimal numbers when dividing.  For the purpose of this project, decimal places are limited to two.  For example,
+
+This project includes a notable amount of CSS styling and formatting to create a better user experience with color contrasts and matching being a at the forefront of my focus to expand the user experience while leading into better accessibility features.  
 
 # Technologies and Tools #
 
