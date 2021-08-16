@@ -7,53 +7,12 @@ const clear = document.querySelector('#clear-btn');
 const operators = document.getElementsByClassName('operators');
 const enter = document.querySelector('#enter-btn');
 
-
 // evaluation global variables
 let value = 0;
 let a = 0;
 let b = 0;
 let operator = '';
 let result = 0;
-
-for (let i = 0; i < digits.length; i++) {
-    // digit event listener loop
-    digits[i].addEventListener('click', (e) => {
-        if (output.textContent === '-' || output.textContent === '+' || output.textContent === '*' || output.textContent === '/') {
-            output.textContent = '';
-            output.textContent += e.target.value;
-        } else if (result = output.textContent) {
-            output.textContent = '';
-            output.textContent = e.target.value;
-            b = value;
-        } else {
-            output.textContent += e.target.value;
-        }
-        value = output.textContent;
-    });
-}
-for (let y = 0; y < operators.length; y++) {
-    // operator event listener loop
-    operators[y].addEventListener('click', (e) => {
-        if (operator !== '') {
-            b = value;
-            value = 0;
-            result = operate(a, b, operator);
-            output.textContent = +(result.toFixed(2)) + e.target.value;
-            a = result;
-            operator = e.target.value;
-         } else if (!isNaN(output.textContent) && output.textContent !== '') { // if var is number and not empty
-            a = value;
-            value = 0;
-            output.textContent = '';
-            output.textContent = e.target.value;
-            operator = e.target.value;
-        }
-    });
-}
-
-// eventListeners
-clear.addEventListener('click', clearValues);
-enter.addEventListener('click', evaluate);
 
 // helper functions
 function evaluate() {
@@ -71,6 +30,14 @@ function clearValues() {
     b = 0;
     value = 0;
     result = 0;
+}
+function operatorPresent(e) {
+    b = value;
+    value = 0;
+    result = operate(a, b, operator);
+    output.textContent = +(result.toFixed(2)) + e.target.value;
+    a = result;
+    operator = e.target.value;
 }
 // math functions
 function add(a, b) {
@@ -96,3 +63,38 @@ function operate(a, b, operator) {
         return divide(a, b);
     }
 }
+
+for (let i = 0; i < digits.length; i++) {
+    // digit event listener loop
+    digits[i].addEventListener('click', (e) => {
+        if (output.textContent === '-' || output.textContent === '+' || output.textContent === '*' || output.textContent === '/') {
+            output.textContent = '';
+            output.textContent += e.target.value;
+        }  else if (operator) {
+            b = value;
+            output.textContent = '';
+            output.textContent += e.target.value;
+        }  else {
+            output.textContent += e.target.value;
+        }
+        value = output.textContent;
+    });
+}
+for (let y = 0; y < operators.length; y++) {
+    // operator event listener loop
+    operators[y].addEventListener('click', (e) => {
+        if (operator !== '') {
+            operatorPresent(e);
+         } else if (!isNaN(output.textContent) && output.textContent !== '') {
+            a = value;
+            value = 0;
+            output.textContent = '';
+            output.textContent = e.target.value;
+            operator = e.target.value;
+        }
+    });
+}
+
+// eventListeners
+clear.addEventListener('click', clearValues);
+enter.addEventListener('click', evaluate);
