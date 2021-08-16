@@ -36,7 +36,7 @@ function operatorPresent(e) {
     value = 0;
     result = operate(a, b, operator);
     operator = e.target.value;
-    output.textContent = +(result.toFixed(2)) + e.target.value;
+    output.textContent = +(result.toFixed(2)) + operator;
     a = result;
 }
 function operatorNotSetDisplayIsNumber(e) {
@@ -74,7 +74,9 @@ function operate(a, b, operator) {
 for (let i = 0; i < digits.length; i++) {
     // digit event listener loop
     digits[i].addEventListener('click', (e) => {
-        if (operator !== '') {
+        if (operator !== '' && !isNaN(output.textContent)) {
+            output.textContent += e.target.value;
+        }  else if (operator !== '') {
             b = value;
             output.textContent = '';  // this line causing problem of one digit only values
             output.textContent += e.target.value;
