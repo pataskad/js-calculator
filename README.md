@@ -1,4 +1,4 @@
-# Calculator #
+# JavaScript Calculator #
 
 This JavaScript calculator project, based from 'The Odin Project' curriculum, contains basic arithmetic functions through an HTML user interface in order for users to interact with and compute math arguments through custom built JavaScript functions. In addition to basic arithmetic functionality, this project includes edge case handling to account for the potential bad inputs and funky numbers that may be produced by the calculator, such as long decimal numbers when dividing.  For the purpose of this project, decimal places are limited to two.  For example,
 

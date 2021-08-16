@@ -35,9 +35,16 @@ function operatorPresent(e) {
     b = value;
     value = 0;
     result = operate(a, b, operator);
+    operator = e.target.value;
     output.textContent = +(result.toFixed(2)) + e.target.value;
     a = result;
+}
+function operatorNotSetDisplayIsNumber(e) {
+    a = value;
+    value = 0;
     operator = e.target.value;
+    output.textContent = '';
+    output.textContent = operator;
 }
 // math functions
 function add(a, b) {
@@ -67,12 +74,9 @@ function operate(a, b, operator) {
 for (let i = 0; i < digits.length; i++) {
     // digit event listener loop
     digits[i].addEventListener('click', (e) => {
-        if (output.textContent === '-' || output.textContent === '+' || output.textContent === '*' || output.textContent === '/') {
-            output.textContent = '';
-            output.textContent += e.target.value;
-        }  else if (operator) {
+        if (operator !== '') {
             b = value;
-            output.textContent = '';
+            output.textContent = '';  // this line causing problem of one digit only values
             output.textContent += e.target.value;
         }  else {
             output.textContent += e.target.value;
@@ -85,12 +89,8 @@ for (let y = 0; y < operators.length; y++) {
     operators[y].addEventListener('click', (e) => {
         if (operator !== '') {
             operatorPresent(e);
-         } else if (!isNaN(output.textContent) && output.textContent !== '') {
-            a = value;
-            value = 0;
-            output.textContent = '';
-            output.textContent = e.target.value;
-            operator = e.target.value;
+        } else if (!isNaN(output.textContent) && output.textContent !== '') {
+            operatorNotSetDisplayIsNumber(e);
         }
     });
 }
