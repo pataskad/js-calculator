@@ -75,7 +75,7 @@ header > h3 {
     width: 17%;
     margin-left: 5px;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
 }
 .operators {
     width: 100%;
@@ -95,6 +95,7 @@ header > h3 {
     height: 100%;
     cursor: pointer;
     font-size: large;
+    border: 1px solid teal;
 }
 .enter-clear:hover {
     color: greenyellow;

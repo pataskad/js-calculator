@@ -6,6 +6,7 @@ const digits = document.getElementsByClassName('digits');
 const clear = document.querySelector('#clear-btn');
 const operators = document.getElementsByClassName('operators');
 const enter = document.querySelector('#enter-btn');
+const decimal = document.querySelector('#decimal');
 
 // evaluation global variables
 let value = 0;
@@ -16,14 +17,12 @@ let result = 0;
 
 // helper functions
 function evaluate() {
-    // if dividing by zero (0), return error message
     b = value;
     if (isNaN(output.textContent)) {
         output.textContent = 'Error';
     }   else if (operator === '/' && b == 0) {
         output.textContent = 'Not so fast buckshot!';
     }   else if (output.textContent) {
-        /* b = value; */
         result = operate(a, b, operator);
         output.textContent = +(result.toFixed(2));
     }   
@@ -76,14 +75,15 @@ function operate(a, b, operator) {
     }
 }
 
-for (let i = 0; i < digits.length; i++) {
-    // digit event listener loop
+for (let i = 0; i < digits.length; i++) { // digit event listener loop
     digits[i].addEventListener('click', (e) => {
         if (operator !== '' && !isNaN(output.textContent)) {
             output.textContent += e.target.value;
+        }  else if (output.textContent == '.') {
+            output.textContent += e.target.value;
         }  else if (operator !== '') {
             b = value;
-            output.textContent = '';  // this line causing problem of one digit only values
+            output.textContent = '';
             output.textContent += e.target.value;
         }  else {
             output.textContent += e.target.value;
@@ -91,8 +91,7 @@ for (let i = 0; i < digits.length; i++) {
         value = output.textContent;
     });
 }
-for (let y = 0; y < operators.length; y++) {
-    // operator event listener loop
+for (let y = 0; y < operators.length; y++) { // operator event listener loop
     operators[y].addEventListener('click', (e) => {
         if (operator !== '') {
             operatorPresent(e);
