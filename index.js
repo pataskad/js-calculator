@@ -17,11 +17,16 @@ let result = 0;
 // helper functions
 function evaluate() {
     // if dividing by zero (0), return error message
-    if (output.textContent) {
-        b = value;
+    b = value;
+    if (isNaN(output.textContent)) {
+        output.textContent = 'Error';
+    }   else if (operator === '/' && b == 0) {
+        output.textContent = 'Not so fast buckshot!';
+    }   else if (output.textContent) {
+        /* b = value; */
         result = operate(a, b, operator);
         output.textContent = +(result.toFixed(2));
-    }
+    }   
 }
 function clearValues() {
     output.textContent = '';
