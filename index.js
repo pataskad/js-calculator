@@ -53,8 +53,11 @@ function operatorNotSetDisplayIsNumber(e) {
     output.textContent = operator;
 }
 function decimalDisplay(e) {
-    if (decimalAllowed === true && operator !== '') {
+    if (isNaN(output.textContent)) {
         b = value;
+        output.textContent = '';
+        output.textContent += e.target.value;
+    }  else if (decimalAllowed === true && operator !== '') {
         output.textContent += e.target.value;
     }  else if (decimalAllowed === true) {
         output.textContent += e.target.value;
@@ -90,6 +93,8 @@ function operate(a, b, operator) {
 for (let i = 0; i < digits.length; i++) { // digit event listener loop
     digits[i].addEventListener('click', (e) => {
         if (operator !== '' && !isNaN(output.textContent)) {
+            output.textContent += e.target.value;
+        }  else if (operator !== '' && output.textContent == '.') {
             output.textContent += e.target.value;
         }  else if (operator !== '') {
             b = value;
