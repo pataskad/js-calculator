@@ -15,6 +15,7 @@ let b = 0;
 let operator = '';
 let result = 0;
 let decimalAllowed = true;
+let operatorAllowed = true;
 
 // helper functions
 function evaluate() {
@@ -26,7 +27,8 @@ function evaluate() {
     }   else if (output.textContent) {
         result = operate(a, b, operator);
         output.textContent = +(result.toFixed(2));
-    }   
+    }
+    a = 0;   
 }
 function clearValues() {
     output.textContent = '';
@@ -36,6 +38,7 @@ function clearValues() {
     value = 0;
     result = 0;
     decimalAllowed = true;
+    operatorAllowed = true;
 }
 function operatorPresent(e) {
     b = value;
@@ -53,7 +56,7 @@ function operatorNotSetDisplayIsNumber(e) {
     output.textContent = operator;
 }
 function decimalDisplay(e) {
-    if (isNaN(output.textContent)) {
+    if (isNaN(output.textContent) || output.textContent == +(result.toFixed(2))) {
         b = value;
         output.textContent = '';
         output.textContent += e.target.value;
@@ -104,15 +107,17 @@ for (let i = 0; i < digits.length; i++) { // digit event listener loop
             output.textContent += e.target.value;
         }
         value = output.textContent;
+        operatorAllowed = true;
     });
 }
 for (let y = 0; y < operators.length; y++) { // operator event listener loop
     operators[y].addEventListener('click', (e) => {
-        if (operator !== '') {
+        if (operatorAllowed === true && operator !== '') {
             operatorPresent(e);
-        } else if (!isNaN(output.textContent) && output.textContent !== '') {
+        } else if (operatorAllowed === true && !isNaN(output.textContent) && output.textContent !== '') {
             operatorNotSetDisplayIsNumber(e);
         }
+        operatorAllowed = false;
         decimalAllowed = true;
     });
 }
