@@ -37,14 +37,21 @@ header > h3 {
     background-color: #b3ff66;
     border: 1px solid darkslategray;
 }
+#currentVals {
+    text-align: right;
+    height: 23%;
+    width: 98%;
+    padding-top: 5px;
+    font-size: large;
+    overflow: hidden;
+}
 #output {
     text-align: right;
-    height: 75%;
-    width: 95%;
-    margin: 5px;
+    height: 55%;
+    width: 98%;
     background-color: #b3ff66a2;
     font-size: xx-large;
-    padding-top: 12px;
+    padding-top: 10px;
     overflow: hidden;
 }
 .bottom-calc {

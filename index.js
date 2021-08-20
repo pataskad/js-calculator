@@ -2,6 +2,7 @@
 
 // nodes 
 const output = document.querySelector('#output');
+const currentValues = document.querySelector('#currentVals');
 const digits = document.getElementsByClassName('digits');
 const clear = document.querySelector('#clear-btn');
 const operators = document.getElementsByClassName('operators');
@@ -27,10 +28,12 @@ function evaluate() {
     }   else if (output.textContent) {
         result = operate(a, b, operator);
         output.textContent = +(result.toFixed(2));
-    }
-    a = 0;   
+    }  
+    displayCurrentValues(); 
+    currentValues.textContent += ' =';
 }
 function clearValues() {
+    currentValues.textContent = '';
     output.textContent = '';
     operator = '';
     a = 0;
@@ -42,11 +45,10 @@ function clearValues() {
 }
 function operatorPresent(e) {
     b = value;
-    value = 0;
     result = operate(a, b, operator);
+    a = result;
     operator = e.target.value;
     output.textContent = +(result.toFixed(2)) + operator;
-    a = result;
 }
 function operatorNotSetDisplayIsNumber(e) {
     a = value;
@@ -56,7 +58,7 @@ function operatorNotSetDisplayIsNumber(e) {
     output.textContent = operator;
 }
 function decimalDisplay(e) {
-    if (isNaN(output.textContent) || output.textContent == +(result.toFixed(2))) {
+    if (isNaN(output.textContent)) {
         b = value;
         output.textContent = '';
         output.textContent += e.target.value;
@@ -67,6 +69,9 @@ function decimalDisplay(e) {
         decimalAllowed = false;
     }
     value = output.textContent;  
+}
+function displayCurrentValues() {
+    currentValues.textContent = a + ' ' + operator + ' ' + b;
 }
 // math functions
 function add(a, b) {
@@ -99,10 +104,12 @@ for (let i = 0; i < digits.length; i++) { // digit event listener loop
             output.textContent += e.target.value;
         }  else if (operator !== '' && output.textContent == '.') {
             output.textContent += e.target.value;
+            displayCurrentValues();
         }  else if (operator !== '') {
             b = value;
             output.textContent = '';
             output.textContent += e.target.value;
+            displayCurrentValues();
         }  else {
             output.textContent += e.target.value;
         }
@@ -117,6 +124,7 @@ for (let y = 0; y < operators.length; y++) { // operator event listener loop
         } else if (operatorAllowed === true && !isNaN(output.textContent) && output.textContent !== '') {
             operatorNotSetDisplayIsNumber(e);
         }
+        displayCurrentValues();
         operatorAllowed = false;
         decimalAllowed = true;
     });
