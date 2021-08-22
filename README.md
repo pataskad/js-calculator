@@ -1,8 +1,10 @@
 # JavaScript Calculator #
 
-This JavaScript calculator project, based from 'The Odin Project' curriculum, contains basic arithmetic functions through an HTML user interface in order for users to interact with and compute math arguments through custom built JavaScript functions. In addition to basic arithmetic functionality, this project includes edge case handling to account for the potential bad inputs and funky numbers that may be produced by the calculator, such as long decimal numbers when dividing.  For the purpose of this project, decimal places are limited to two.  For example,
+[Live Demo](https://pataskad.github.io/js-calculator/)
 
-This project includes a notable amount of CSS styling and formatting to create a better user experience with color contrasts and matching being a at the forefront of my focus to expand the user experience while leading into better accessibility features.  
+This JavaScript calculator project, based from 'The Odin Project' curriculum, contains basic arithmetic functions through an HTML user interface in order for users to interact with and compute math arguments through custom built JavaScript functions. In addition to basic arithmetic functionality, this project includes edge case handling to account for the potential bad inputs and funky numbers that may be produced by the calculator, such as long decimal numbers when dividing.  For the purpose of this project, decimal places are limited to two.
+
+This project includes a notable amount of CSS styling and formatting to create a better user experience with color contrasts and matching being a at the forefront of my focus to expand the user experience while leading into better accessibility features.  In addition, this project allows for both mouse 'clicked' manipulation along with a fully functioning keyboard keypad depending on what a user may prefer.
 
 # Technologies and Tools #
 
