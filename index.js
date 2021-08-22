@@ -34,7 +34,8 @@ for (let y = 0; y < operators.length; y++) {
 // helper functions
 function evaluate() {
     b = value;
-    if (isNaN(output.textContent)) {
+    if (!output.textContent) return;
+    else if (isNaN(output.textContent)) {
         output.textContent = 'Error';
     }   else if (operator === '/' && b == 0) {
         output.textContent = 'Not so fast buckshot!';
@@ -74,11 +75,11 @@ function decimalDisplay(e) {
     if (isNaN(output.textContent)) {
         b = value;
         output.textContent = '';
-        output.textContent += e.target.value;
+        output.textContent += e.key || e.target.value;
     }  else if (decimalAllowed === true && operator !== '') {
-        output.textContent += e.target.value;
+        output.textContent += e.key || e.target.value;
     }  else if (decimalAllowed === true) {
-        output.textContent += e.target.value;
+        output.textContent += e.key || e.target.value;
         decimalAllowed = false;
     }
     value = output.textContent;  
@@ -116,7 +117,12 @@ function operatorLogicHandler(e) {
 }
 function keyboardHandler(e) {
     if (e.key >= 0 && e.key <= 9) digitLogicHandler(e);
-
+    if (e.key === '.') decimalDisplay(e);
+    if (e.key === 'Enter') evaluate();
+    if (e.key === 'Escape') clearValues();
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        operatorLogicHandler(e);
+    }
 }
 // math functions
 function add(a, b) {
