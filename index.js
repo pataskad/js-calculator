@@ -24,6 +24,7 @@ clear.addEventListener('click', clearValues);
 enter.addEventListener('click', evaluate);
 decimal.addEventListener('click', decimalDisplay);
 window.addEventListener('keydown', keyboardHandler);
+deleteBtn.addEventListener('click', removeOneValueFromDisplay);
 
 for (let i = 0; i < digits.length; i++) {
     digits[i].addEventListener('click', digitLogicHandler);
