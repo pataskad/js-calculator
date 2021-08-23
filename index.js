@@ -43,7 +43,7 @@ function evaluate() {
         output.textContent = 'Not so fast buckshot!';
     }   else if (output.textContent) {
         result = operate(a, b, operator);
-        output.textContent = +(result.toFixed(2));
+        output.textContent = roundResult(result);
     }  
     displayCurrentValues(); 
     currentValues.textContent += ' =';
@@ -62,9 +62,9 @@ function clearValues() {
 function operatorPresent(e) {
     b = value;
     result = operate(a, b, operator);
-    a = +(result.toFixed(2));
+    a = +(result.toFixed(3));
     operator = e.key || e.target.value;
-    output.textContent = +(result.toFixed(2)) + operator;
+    output.textContent = roundResult(result) + operator;
 }
 function operatorNotSetDisplayIsNumber(e) {
     a = output.textContent;
@@ -133,6 +133,9 @@ function removeOneValueFromDisplay() {
         .toString()
         .slice(0, -1);
     value = output.textContent;
+}
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
 }
 // math functions
 function add(a, b) {
