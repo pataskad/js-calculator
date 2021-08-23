@@ -17,6 +17,7 @@ const clear = document.querySelector('#clear-btn');
 const operators = document.getElementsByClassName('operators');
 const enter = document.querySelector('#enter-btn');
 const decimal = document.querySelector('#decimal');
+const deleteBtn = document.querySelector('#backspace');
 
 // eventListeners
 clear.addEventListener('click', clearValues);
@@ -65,7 +66,7 @@ function operatorPresent(e) {
     output.textContent = +(result.toFixed(2)) + operator;
 }
 function operatorNotSetDisplayIsNumber(e) {
-    a = value;
+    a = output.textContent;
     value = 0;
     operator = e.key || e.target.value;
     output.textContent = '';
@@ -73,7 +74,7 @@ function operatorNotSetDisplayIsNumber(e) {
 }
 function decimalDisplay(e) {
     if (isNaN(output.textContent)) {
-        b = value;
+        b = output.textContent;
         output.textContent = '';
         output.textContent += e.key || e.target.value;
     }  else if (decimalAllowed === true && operator !== '') {
@@ -119,10 +120,18 @@ function keyboardHandler(e) {
     if (e.key >= 0 && e.key <= 9) digitLogicHandler(e);
     if (e.key === '.') decimalDisplay(e);
     if (e.key === 'Enter') evaluate();
+    if (e.key === 'Backspace') removeOneValueFromDisplay();
     if (e.key === 'Escape') clearValues();
     if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
         operatorLogicHandler(e);
     }
+}
+function removeOneValueFromDisplay() {
+    if (!output.textContent) return;
+    output.textContent = output.textContent
+        .toString()
+        .slice(0, -1);
+    value = output.textContent;
 }
 // math functions
 function add(a, b) {
